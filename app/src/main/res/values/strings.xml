@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MyPayment</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_consultation">Mes dépenses</string>
+    <string name="creation_paimement_text_moyen_paiement">Moyen de paiement * :</string>
+    <string name="text_montant_du_paiement">Montant du paiement* :</string>
+    <string name="text_commentaire_du_paiement">Commentaire du paiement* :</string>
+    <string name="creation_reussi">Votre dépense a bien été prise en compte</string>
+    <string name="creation_echec">Une erreur s est produite, votre dépense a échoué</string>
+    <string name="montant_manquant">Merci de renseigner le montant</string>
+    <string name="commentaire_manquant">Merci de renseigner un commentaire</string>
+    <string name="moyen_paiement_manquant">Merci de selectionner un moyen de paiement</string>
+    <string name="format_date_slash">dd/MM/yyyy</string>
+</resources>

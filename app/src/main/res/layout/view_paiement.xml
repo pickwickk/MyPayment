@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+    >
+
+    <TextView
+        android:id="@+id/montant"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/type_paiement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/montant"
+        android:layout_alignTop="@+id/montant"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/text_paiement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_alignLeft="@+id/type_paiement"
+        android:layout_below="@+id/type_paiement"
+        />
+
+    <TextView
+        android:id="@+id/date_paiement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_alignTop="@+id/text_paiement"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"/>
+
+</RelativeLayout>
