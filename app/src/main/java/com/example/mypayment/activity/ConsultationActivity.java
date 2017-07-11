@@ -50,45 +50,16 @@ public class ConsultationActivity extends AbstractActivity implements Observateu
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(mConsultationActivity,CreationPaiementActivity.class);
-                //on lance l'intent, cela a pour effet de stoper l'activité courante et lancer une autre activite ici CreationPaiementActivity
-                Calendar lCalendar = DateUtil.dateDuJour();
-
-                Integer lChoixAnnee = getAnneeChecked();
-                Integer lChoixMois = getMoisChecked();
-
-                if(lChoixAnnee != null && lChoixMois != null){
-                    lCalendar.set(Calendar.YEAR,lChoixAnnee);
-                    lCalendar.set(Calendar.MONTH,lChoixMois);
-                }
-
-                intent.putExtra(IntentVariables.DATE_PAIEMENT,lCalendar);
-                startActivity(intent);
+                lancementActivity(CreationPaiementActivity.class);
             }
         });
 
         mButtonRecapitulatif = (Button) findViewById(R.id.recapitulatif);
         mButtonRecapitulatif.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mConsultationActivity,RecapitulatifActivity.class);
-                //on lance l'intent, cela a pour effet de stoper l'activité courante et lancer une autre activite ici CreationPaiementActivity
-                Calendar lCalendar = DateUtil.dateDuJour();
-
-                Integer lChoixAnnee = getAnneeChecked();
-                Integer lChoixMois = getMoisChecked();
-
-                if(lChoixAnnee != null && lChoixMois != null){
-                    lCalendar.set(Calendar.YEAR,lChoixAnnee);
-                    lCalendar.set(Calendar.MONTH,lChoixMois);
-                }
-
-                intent.putExtra(IntentVariables.DATE_PAIEMENT,lCalendar);
-                startActivity(intent);
+                lancementActivity(RecapitulatifActivity.class);
             }
-
         });
 
         mRadioGroupAnnee = (RadioGroup)findViewById(R.id.radio_choix_annee);
@@ -108,6 +79,29 @@ public class ConsultationActivity extends AbstractActivity implements Observateu
         mRadioGroupMois.setOnCheckedChangeListener(this);
 
         mRadioButtonMoisChecked.setChecked(Boolean.TRUE);
+    }
+
+    private void lancementActivity(Class<?> cls) {
+        Intent intent = new Intent(mConsultationActivity,cls);
+
+        Calendar lCalendar = getDateChecked();
+
+        intent.putExtra(IntentVariables.DATE_PAIEMENT,lCalendar);
+        //on lance l'intent, cela a pour effet de stoper l'activité courante et lancer une autre activite ici RecapitulatifActivity
+        startActivity(intent);
+    }
+
+    private Calendar getDateChecked() {
+        Calendar lCalendar = DateUtil.dateDuJour();
+
+        Integer lChoixAnnee = getAnneeChecked();
+        Integer lChoixMois = getMoisChecked();
+
+        if(lChoixAnnee != null && lChoixMois != null){
+            lCalendar.set(Calendar.YEAR,lChoixAnnee);
+            lCalendar.set(Calendar.MONTH,lChoixMois);
+        }
+        return lCalendar;
     }
 
     private Integer getAnneeChecked(){
@@ -177,7 +171,7 @@ public class ConsultationActivity extends AbstractActivity implements Observateu
         if(aSucces) {
             lMessageEnd = getString(R.string.creation_reussi);
         }else{
-            lMessageEnd = getString(R.string.creation_echec);;
+            lMessageEnd = getString(R.string.creation_echec);
         }
         View lMain = findViewById(R.id.consultation_paiement_view);
         Snackbar.make(lMain, lMessageEnd, Snackbar.LENGTH_LONG)
